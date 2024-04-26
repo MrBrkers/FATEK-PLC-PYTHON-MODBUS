@@ -4,12 +4,12 @@ from pymodbus.client.sync import ModbusSerialClient
 modbus = ModbusSerialClient(method='rtu', port='COM7', baudrate=9600, parity ='N', bytesize = 8, stopbits=1,unit=1)
 modbus.connect()    
 if not modbus.connect() :
-    print("baglidegil")
+    print("not connected, check the parameters and cable")
 if modbus.connect() :
     #for setting a M bit (check the Modbus addresses of
-    print("bagli")
+    print("connected")
     while modbus.connect():
-        at = int(input("1 mi 0 mi : "))
+        at = int(input("1 or 0 ? : "))
         if at == 1 :
             result = modbus.write_coils(address = 2005,count=1,values=1,unit=1)
             print(result)
